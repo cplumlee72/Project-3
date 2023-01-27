@@ -1,52 +1,53 @@
 import { useReducer } from "react";
 import {
-  UPDATE_PRODUCTS,
+  UPDATE_BOOKS,
   ADD_TO_CART,
   UPDATE_CART_QUANTITY,
   REMOVE_FROM_CART,
   ADD_MULTIPLE_TO_CART,
-  UPDATE_CATEGORIES,
-  UPDATE_CURRENT_CATEGORY,
+  UPDATE_GENRES,
+  UPDATE_CURRENT_GENRES,
   CLEAR_CART,
-  TOGGLE_CART
+  TOGGLE_CART,
+  UPDATE_CURRENT_GENRE
 } from "./actions";
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case UPDATE_PRODUCTS:
+    case UPDATE_BOOKS:
       return {
         ...state,
-        products: [...action.products],
+        books: [...action.books],
       };
 
     case ADD_TO_CART:
       return {
         ...state,
         cartOpen: true,
-        cart: [...state.cart, action.product],
+        cart: [...state.cart, action.book],
       };
 
     case ADD_MULTIPLE_TO_CART:
       return {
         ...state,
-        cart: [...state.cart, ...action.products],
+        cart: [...state.cart, ...action.books],
       };
 
     case UPDATE_CART_QUANTITY:
       return {
         ...state,
         cartOpen: true,
-        cart: state.cart.map(product => {
-          if (action._id === product._id) {
-            product.purchaseQuantity = action.purchaseQuantity
+        cart: state.cart.map(book => {
+          if (action._id === book._id) {
+            book.purchaseQuantity = action.purchaseQuantity
           }
-          return product
+          return book
         })
       };
 
     case REMOVE_FROM_CART:
-      let newState = state.cart.filter(product => {
-        return product._id !== action._id;
+      let newState = state.cart.filter(book => {
+        return book._id !== action._id;
       });
 
       return {
@@ -68,13 +69,13 @@ export const reducer = (state, action) => {
         cartOpen: !state.cartOpen
       };
 
-    case UPDATE_CATEGORIES:
+    case UPDATE_GENRES:
       return {
         ...state,
-        categories: [...action.categories],
+        genres: [...action.genres],
       };
 
-    case UPDATE_CURRENT_CATEGORY:
+    case UPDATE_CURRENT_GENRE:
       return {
         ...state,
         currentCategory: action.currentCategory
@@ -85,6 +86,6 @@ export const reducer = (state, action) => {
   }
 };
 
-export function useProductReducer(initialState) {
+export function useBookReducer(initialState) {
   return useReducer(reducer, initialState)
 }

@@ -1,13 +1,13 @@
 import React from "react";
-import ProductList from "../components/ProductList";
-import CategoryMenu from "../components/CategoryMenu";
+import BookList from "../components/BookList";
+import GenreMenu from "../components/GenreMenu";
 import Cart from "../components/Cart";
 
 const Home = () => {
   return (
     <div className="container">
-      <CategoryMenu />
-      <ProductList />
+      <GenreMenu />
+      <BookList />
       <Cart />
     </div>
   );
