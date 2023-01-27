@@ -8,7 +8,7 @@ const resolvers = {
     genres: async () => {
       return await Genre.find();
     },
-    genres: async (parent, { genre, name }) => {
+    books: async (parent, { genre, name }) => {
       const params = {};
 
       if (genre) {
@@ -23,52 +23,52 @@ const resolvers = {
 
       return await Book.find(params).populate('genre');
     },
-    product: async (parent, { _id }) => {
+    book: async (parent, { _id }) => {
       return await Book.findById(_id).populate('genre');
     },
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: 'genres.genres',
+          path: 'orders.books',
           populate: 'genre'
         });
 
-        user.genres.sort((a, b) => b.purchaseDate - a.purchaseDate);
+        user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
 
         return user;
       }
 
       throw new AuthenticationError('Not logged in');
     },
-    genre: async (parent, { _id }, context) => {
+    order: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: 'genres.genres',
+          path: 'orders.books',
           populate: 'genre'
         });
 
-        return user.genres.id(_id);
+        return user.orders.id(_id);
       }
 
       throw new AuthenticationError('Not logged in');
     },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
-      const genre = new Order({ genres: args.genres });
+      const order = new Order({ books: args.books });
       const line_items = [];
 
-      const { genres } = await genre.populate('genres');
+      const { books } = await order.populate('books');
 
-      for (let i = 0; i < genres.length; i++) {
-        const product = await stripe.genres.create({
-          name: genres[i].name,
-          description: genres[i].description,
-          images: [`${url}/images/${genres[i].image}`]
+      for (let i = 0; i < books.length; i++) {
+        const book = await stripe.books.create({
+          name: books[i].name,
+          description: books[i].description,
+          images: [`${url}/images/${books[i].image}`]
         });
 
         const price = await stripe.prices.create({
-          product: product.id,
-          unit_amount: genres[i].price * 100,
+          book: book.id,
+          unit_amount: books[i].price * 100,
           currency: 'usd',
         });
 
@@ -96,14 +96,14 @@ const resolvers = {
 
       return { token, user };
     },
-    addOrder: async (parent, { genres }, context) => {
+    addOrder: async (parent, { books }, context) => {
       console.log(context);
       if (context.user) {
-        const genre = new Order({ genres });
+        const order = new Order({ books });
 
-        await User.findByIdAndUpdate(context.user._id, { $push: { genres: genre } });
+        await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
 
-        return genre;
+        return order;
       }
 
       throw new AuthenticationError('Not logged in');
