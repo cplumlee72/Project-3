@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const productSchema = new Schema({
+const clubSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -13,24 +13,23 @@ const productSchema = new Schema({
   },
   image: {
     type: String
+
   },
-  price: {
-    type: Number,
-    required: true,
-    min: 0.99
+  Users: {
+    type: Array
   },
-  quantity: {
-    type: Number,
+  Private: {
+    type: Boolean,
     min: 0,
     default: 0
   },
-  category: {
+  genre: {
     type: Schema.Types.ObjectId,
-    ref: 'Category',
+    ref: 'Genre',
     required: true
   }
 });
 
-const Product = mongoose.model('Product', productSchema);
+const Club = mongoose.model('Club', clubSchema);
 
-module.exports = Product;
+module.exports = Club;
