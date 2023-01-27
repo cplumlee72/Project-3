@@ -6,14 +6,23 @@ const typeDefs = gql`
     name: String
   }
 
-  type Product {
+  type Book {
     _id: ID
     name: String
     description: String
     image: String
-    quantity: Int
     price: Float
     category: Category
+  }
+
+  type Club {
+    _id: ID
+    name: String
+    description: String
+    image: String
+    users: [User]
+    admin: [User]
+    private: Boolean
   }
 
   type Order {
@@ -24,8 +33,7 @@ const typeDefs = gql`
 
   type User {
     _id: ID
-    firstName: String
-    lastName: String
+    userName: String
     email: String
     orders: [Order]
   }
@@ -41,8 +49,8 @@ const typeDefs = gql`
 
   type Query {
     categories: [Category]
-    products(category: ID, name: String): [Product]
-    product(_id: ID!): Product
+    books(category: ID, name: String): [Book]
+    book(_id: ID!): Book
     user: User
     order(_id: ID!): Order
     checkout(products: [ID]!): Checkout
