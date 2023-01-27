@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Book, Genre, Order } = require('../models');
+const { User, Book, Genre, Order, Club } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -46,6 +46,15 @@ const resolvers = {
           path: 'orders.books',
           populate: 'genre'
         });
+
+        return user.orders.id(_id);
+      }
+
+      throw new AuthenticationError('Not logged in');
+    },
+    clubs: async (parent, { _id }, context) => {
+      if (context.user) {
+        const user = await Club.find(context.user._id).populate();
 
         return user.orders.id(_id);
       }
