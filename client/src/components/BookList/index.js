@@ -31,7 +31,7 @@ function BookList() {
         });
       });
     }
-  }, [data, loading, dispatch]);
+  }, [loading]);
 
   function filterBooks() {
     if (!currentGenre) {
@@ -48,7 +48,7 @@ function BookList() {
       <h2>Our Books:</h2>
       {state.books.length ? (
         <div className="flex-row">
-          {filterBooks().map((book) => (
+          {state.books.map((book) => (
             <BookItem
               key={book._id}
               _id={book._id}
