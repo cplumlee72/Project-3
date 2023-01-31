@@ -19,7 +19,9 @@ function BookItem(item) {
   const { cart } = state
 
   const addToCart = () => {
-    const itemInCart = cart.find((cartItem) => cartItem._id === _id)
+    const itemInCart = cart.find((cartItem) => cartItem._id === _id);
+    console.log(itemInCart);
+    console.log(cart);
     if (itemInCart) {
       dispatch({
         type: UPDATE_CART_QUANTITY,
@@ -33,7 +35,7 @@ function BookItem(item) {
     } else {
       dispatch({
         type: ADD_TO_CART,
-        product: { ...item, purchaseQuantity: 1 }
+        book: { ...item, purchaseQuantity: 1 }
       });
       idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
     }
