@@ -32,8 +32,10 @@ function BookList() {
       });
     }
   }, [loading]);
-
+  
   function filterBooks() {
+    console.log(state.books[0].genre)
+    console.log(currentGenre)
     if (!currentGenre) {
       return state.books;
     }
@@ -43,12 +45,13 @@ function BookList() {
     );
   }
 
+  
   return (
     <div className="my-2">
       <h2>Our Books:</h2>
-      {state.books.length ? (
+      { state.books.length ? (
         <div className="flex-row">
-          {state.books.map((book) => (
+          {filterBooks().map((book) => (
             <BookItem
               key={book._id}
               _id={book._id}

@@ -49,7 +49,7 @@ function Detail() {
         });
       });
     }
-  }, [books, data, loading, dispatch, id]);
+  }, [loading]);
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === id);

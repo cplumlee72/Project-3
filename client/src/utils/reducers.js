@@ -6,7 +6,6 @@ import {
   REMOVE_FROM_CART,
   ADD_MULTIPLE_TO_CART,
   UPDATE_GENRES,
-  UPDATE_CURRENT_GENRES,
   CLEAR_CART,
   TOGGLE_CART,
   UPDATE_CURRENT_GENRE
@@ -78,7 +77,7 @@ export const reducer = (state, action) => {
     case UPDATE_CURRENT_GENRE:
       return {
         ...state,
-        currentCategory: action.currentCategory
+        currentGenre: action.currentGenre
       }
 
     default:

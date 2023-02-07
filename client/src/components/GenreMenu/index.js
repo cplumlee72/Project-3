@@ -11,17 +11,18 @@ import { idbPromise } from '../../utils/helpers';
 function GenreMenu() {
   const [state, dispatch] = useStoreContext();
 
-  const { genres } = state;
+  const { genres, currentGenre } = state;
 
-  const { loading, data: genreData } = useQuery(QUERY_GENRES);
-
+  const { loading, data } = useQuery(QUERY_GENRES);
+  
   useEffect(() => {
-    if (genreData) {
+    if (data) {
+      console.log(data)
       dispatch({
         type: UPDATE_GENRES,
-        genres: genreData.genres,
+        genres: data.genres,
       });
-      genreData.genres.forEach((genre) => {
+      data.genres.forEach((genre) => {
         idbPromise('genres', 'put', genre);
       });
     } else if (!loading) {
@@ -32,21 +33,21 @@ function GenreMenu() {
         });
       });
     }
-  }, [genreData, loading, dispatch]);
+  }, [loading]);
 
-  const handleClick = (id) => {
+  const handleClick = (_id) => {
     dispatch({
       type: UPDATE_CURRENT_GENRE,
-      currentGenre: id,
+      currentGenre: _id,
     });
   };
 
   return (
     <div>
       <h2>Choose a Genre:</h2>
-      {genres.map((item) => (
+      {state.genres.map((item) => (
         <button
-          key={item._id}
+          key={item.name}
           onClick={() => {
             handleClick(item._id);
           }}
