@@ -27,6 +27,9 @@ const clubSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Genre',
     required: true
+  },
+  Comments: {
+    type: Schema.Types.Array
   }
 });
 
