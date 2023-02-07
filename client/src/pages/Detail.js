@@ -18,7 +18,7 @@ function Detail() {
   const [state, dispatch] = useStoreContext();
   const { id } = useParams();
 
-  const [currentBook, setCurrentBook] = useState({});
+  const [currentBook, setCurrentBook] = useState();
 
   const { loading, data } = useQuery(QUERY_BOOKS);
 
@@ -26,6 +26,7 @@ function Detail() {
 
   useEffect(() => {
     // already in global store
+    console.log(currentBook)
     if (books.length) {
       setCurrentBook(books.find((book) => book._id === id));
     }
@@ -49,7 +50,7 @@ function Detail() {
         });
       });
     }
-  }, [loading]);
+  }, []);
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === id);
@@ -87,7 +88,7 @@ function Detail() {
         <div className="container my-1">
           <Link to="/">← Back to Books</Link>
 
-          <h2>{currentBook.name}</h2>
+          <h2>{currentBook.name + ` - ` + currentBook.genre}</h2>
 
           <p>{currentBook.description}</p>
 

@@ -66,7 +66,7 @@ function App() {
                 element={<OrderHistory />} 
               />
               <Route 
-                path="/products/:id" 
+                path="/books/:id" 
                 element={<Detail />} 
               />
               <Route 

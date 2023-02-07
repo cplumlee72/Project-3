@@ -10,6 +10,8 @@ query getBooks {
     image
     genre {
       _id
+      name
+    
     }
   }
 }
@@ -31,7 +33,8 @@ export const QUERY_ALL_BOOKS = gql`
       description
       price
       quantity
-      category {
+      genre {
+        _id
         name
       }
     }

@@ -10,6 +10,7 @@ const typeDefs = gql`
     _id: ID
     name: String
     description: String
+    quantity: Int
     image: String
     price: Float
     genre: Genre
@@ -50,7 +51,7 @@ const typeDefs = gql`
   type Query {
     genres: [Genre]
     clubs: [Club]
-    books(Genre: ID, name: String): [Book]
+    books(genre: String, name: String): [Book]
     book(_id: ID!): Book
     user: User
     order(_id: ID!): Order
