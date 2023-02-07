@@ -27,7 +27,7 @@ db.once('open', async () => {
       quantity: 500
     },
     {
-      name: 'Canned Coffee',
+      name: 'Tools of Titans',
       description:
         'Praesent sed lacinia mauris. Nulla congue nibh magna, at feugiat nunc scelerisque quis. Donec iaculis rutrum vulputate. Suspendisse lectus sem, vulputate ac lectus sed, placerat consequat dui.',
       image: 'canned-coffee.jpg',
@@ -36,7 +36,7 @@ db.once('open', async () => {
       quantity: 500
     },
     {
-      name: 'Toilet Paper',
+      name: 'The Alchemist',
       genre: genres[1],
       description:
         'Donec volutpat erat erat, sit amet gravida justo sodales in. Phasellus tempus euismod urna. Proin ultrices nisi ut ipsum congue, vitae porttitor libero suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam lacinia a nisi non congue.',
@@ -45,7 +45,7 @@ db.once('open', async () => {
       quantity: 20
     },
     {
-      name: 'Handmade Soap',
+      name: 'The Da Vinci Code',
       genre: genres[1],
       description:
         'Praesent placerat, odio vel euismod venenatis, lectus arcu laoreet felis, et fringilla sapien turpis vestibulum nisl.',
@@ -54,7 +54,7 @@ db.once('open', async () => {
       quantity: 50
     },
     {
-      name: 'Set of Wooden Spoons',
+      name: 'The Richest Man in Babylon',
       genre: genres[1],
       description:
         'Vivamus ut turpis in purus pretium mollis. Donec turpis odio, semper vel interdum ut, vulputate at ex. Duis dignissim nisi vel tortor imperdiet finibus. Aenean aliquam sagittis rutrum.',
@@ -63,7 +63,7 @@ db.once('open', async () => {
       quantity: 100
     },
     {
-      name: 'Camera',
+      name: 'Atomic Habits',
       genre: genres[2],
       description:
         'Vestibulum risus metus, luctus non tortor quis, tincidunt consectetur ex. Nullam vitae lobortis ligula, ut sagittis massa. Curabitur consectetur, tellus at pulvinar venenatis, erat augue cursus erat, eu ullamcorper eros lectus ultrices ipsum. Integer rutrum, augue vitae auctor venenatis, turpis turpis elementum orci, at sagittis risus mi a leo.',
@@ -72,7 +72,7 @@ db.once('open', async () => {
       quantity: 30
     },
     {
-      name: 'Tablet',
+      name: 'The 48 Laws of Power',
       genre: genres[2],
       description:
         'In sodales, ipsum quis ultricies porttitor, tellus urna aliquam arcu, eget venenatis purus ligula ut nisi. Fusce ut felis dolor. Mauris justo ante, aliquet non tempus in, tempus ac lorem. Aliquam lacinia dolor eu sem eleifend ultrices. Etiam mattis metus metus. Sed ligula dui, placerat non turpis vitae, suscipit volutpat elit. Phasellus sagittis, diam elementum suscipit fringilla, libero mauris scelerisque ex, ac interdum diam erat non sapien.',
