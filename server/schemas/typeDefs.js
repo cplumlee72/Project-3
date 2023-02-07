@@ -22,8 +22,26 @@ const typeDefs = gql`
     description: String
     image: String
     users: [User]
-    admin: [User]
+    admins: [User]
     private: Boolean
+    book: Book
+    posts: [Post]
+  }
+
+  type Post {
+    _id: ID
+    text: String
+    user: User
+    likes: Int
+    dislikes: Int
+  }
+
+  type Comment {
+    _id: ID
+    text: String
+    user: User
+    likes: Int
+    dislikes: Int
   }
 
   type Order {
@@ -34,6 +52,7 @@ const typeDefs = gql`
 
   type User {
     _id: ID
+    password: String
     userName: String
     email: String
     orders: [Order]

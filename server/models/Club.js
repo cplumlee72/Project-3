@@ -13,7 +13,6 @@ const clubSchema = new Schema({
   },
   image: {
     type: String
-
   },
   Users: {
     type: Array
@@ -23,12 +22,15 @@ const clubSchema = new Schema({
     min: 0,
     default: 0
   },
-  genre: {
+  admins: {
+    type: Array,
+  },
+  book: {
     type: Schema.Types.ObjectId,
-    ref: 'Genre',
+    ref: 'Book',
     required: true
   },
-  Comments: {
+  Posts: {
     type: Schema.Types.Array
   }
 });
