@@ -39,10 +39,10 @@ function GenreMenu() {
   };
 
   return (
-    <div>
-      <h2>Choose a Genre:</h2>
+    <div className="bkGenre">
+      <h2 className="py-2">Choose a Genre:</h2>
       {state.genres.map((item) => (
-        <button
+        <button className="genreButton"
           key={item.name}
           onClick={() => {
             handleClick(item._id);

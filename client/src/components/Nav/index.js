@@ -7,7 +7,7 @@ function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="flex-row">
+        <ul className="flex-row nav-con">
 
           <li className="mx-1">
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
@@ -20,17 +20,17 @@ function Nav() {
     } else {
       return (
         <ul className="flex-row">
-          <li className="mx-1">
+          <li className="mx-1 nav-item">
             <Link to="/signup">
               Signup
             </Link>
           </li>
-          <li className="mx-1">
+          <li className="mx-1 nav-item">
             <Link to="/login">
               Login
             </Link>
           </li>
-          <li className="mx-1">
+          <li className="mx-1 nav-item">
             <Link to="/clubs">
               View Clubs
             </Link>
@@ -41,7 +41,7 @@ function Nav() {
   }
 
   return (
-    <header className="flex-row px-1">
+    <header className="flex-row px-1 mx-1 nav-con">
       <h1>
         <Link to="/">
           <span role="img" aria-label="shopping bag">📖</span>
