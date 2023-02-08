@@ -30,46 +30,51 @@ function Signup(props) {
   };
 
   return (
-    <div className="container my-1">
-      {/* <Link to="/login">← Go to Login</Link> */}
+    <section className="main">
+      <div className="login-container">
+        {/* <Link to="/login">← Go to Login</Link> */}
 
-      <p className="title">Sign up!</p>
-      <div className="division"></div>
-      <p class="welcome-note">Please enter a username, as well as a valid email address and password</p>
-      <form className="login-form" onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
-          <input
-            placeholder="Username"
-            name="userName"
-            type="userName"
-            id="userName"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
-          <input
-            placeholder="youremail@test.com"
-            name="email"
-            type="email"
-            id="email"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
+        <p className="title">Sign up!</p>
+        <div className="signUpDivision"></div>
+        <p class="welcome-note">Please enter a username, as well as a valid email address and password</p>
+        <form className="login-form" onSubmit={handleFormSubmit}>
+          <div className="form-control">
+            <input
+              className="signup py-2"
+              placeholder="Username"
+              name="userName"
+              type="userName"
+              id="userName"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-control">
+            <input
+              className="signup py-2"
+              placeholder="Email"
+              name="email"
+              type="email"
+              id="email"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-control">
 
-          <input
-            placeholder="******"
-            name="password"
-            type="password"
-            id="pwd"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
-    </div>
+            <input
+              className="signup py-2"
+              placeholder="Password"
+              name="password"
+              type="password"
+              id="pwd"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="">
+            <button className="submit" type="submit">Sign Up</button>
+          </div>
+        </form>
+      </div>
+    </section>
   );
 }
 

@@ -253,6 +253,14 @@ section {
   margin: 24px;
 }
 
+.signUpDivision {
+  width: 450px;
+  height: 5px;
+  background-color: #273469;
+  margin: 24px;
+  margin-left: 195px;
+}
+
 .welcome-note {
   text-align: center;
   font-size: 26px;
@@ -285,7 +293,7 @@ button {
 
 input {
   width: 100%;
-  background: #ced4da;
+  background: #fff;
   color: #333;
   letter-spacing: 1px;
   margin: 0;
@@ -341,6 +349,10 @@ button[disabled] {
   padding-bottom: 0px;
 } 
 
+.signup.py-2 {
+  width: 50%;
+}
+
 .my-2 {
   margin-top: var(--spacing-two);
   margin-bottom: var(--spacing-two);
@@ -377,6 +389,16 @@ img {
 .itemPrice, 
 .itemStock{
   font-size: 20px;
+}
+
+.nav-con {
+  margin-top: 25px;
+}
+
+.nav-item {
+  list-style: none;
+  margin-top: 15px;
+  margin-left: 30px;
 }
 
 @media screen and (max-width: 768px) {
