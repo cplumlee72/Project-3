@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Book, Genre, Order, Club } = require('../models');
+const { User, Book, Genre, Order, Club, Post } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -7,6 +7,15 @@ const resolvers = {
   Query: {
     genres: async () => {
       return await Genre.find();
+    },
+    clubs: async () => {
+      return await Club.find();
+    },
+    club: async (parent, { _id }) => {
+      return await Club.findById(_id);
+    },
+    posts: async () => {
+      return await Post.find();
     },
     books: async (parent, { genre, name }) => {
       const params = {};
@@ -46,15 +55,6 @@ const resolvers = {
           path: 'orders.books',
           populate: 'genre'
         });
-
-        return user.orders.id(_id);
-      }
-
-      throw new AuthenticationError('Not logged in');
-    },
-    clubs: async (parent, { _id }, context) => {
-      if (context.user) {
-        const user = await Club.find(context.user._id).populate();
 
         return user.orders.id(_id);
       }
@@ -128,6 +128,10 @@ const resolvers = {
       const decrement = Math.abs(quantity) * -1;
 
       return await Book.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
+    },
+    updatePost: async (parent, { _id, likes, dislikes}) => {
+      
+      return await Post.findByIdAndUpdate(_id, {likes: likes, dislikes:dislikes}, { new: true })
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });

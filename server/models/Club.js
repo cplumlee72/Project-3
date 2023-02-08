@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const User = require('./User');
+const  Post  = require('./Post');
 
 const { Schema } = mongoose;
 
@@ -14,25 +16,26 @@ const clubSchema = new Schema({
   image: {
     type: String
   },
-  Users: {
-    type: Array
+  users: {
+    type: [User.schema]
   },
-  Private: {
+  locked: {
     type: Boolean,
-    min: 0,
-    default: 0
   },
   admins: {
-    type: Array,
+    type: [User.schema],
   },
   book: {
-    type: Schema.Types.ObjectId,
+    type: String,
     ref: 'Book',
     required: true
   },
-  Posts: {
-    type: Schema.Types.Array
+  posts: {
+    type: Array,
+    ref: 'Post'
   }
+
+
 });
 
 const Club = mongoose.model('Club', clubSchema);

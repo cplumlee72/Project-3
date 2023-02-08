@@ -8,7 +8,8 @@ import {
   UPDATE_GENRES,
   CLEAR_CART,
   TOGGLE_CART,
-  UPDATE_CURRENT_GENRE
+  UPDATE_CURRENT_GENRE,
+  UPDATE_CLUBS
 } from "./actions";
 
 export const reducer = (state, action) => {
@@ -78,8 +79,13 @@ export const reducer = (state, action) => {
       return {
         ...state,
         currentGenre: action.currentGenre
-      }
+      };
 
+      case UPDATE_CLUBS:
+        return {
+          ...state,
+          clubs: action.clubs
+        };
     default:
       return state;
   }

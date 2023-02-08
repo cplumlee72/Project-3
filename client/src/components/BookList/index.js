@@ -17,6 +17,7 @@ function BookList() {
   useEffect(() => {
   
     if (data) {
+      console.log(data)
       dispatch({
         type: UPDATE_BOOKS,
         books: data.books,
@@ -35,7 +36,7 @@ function BookList() {
   }, [loading]);
   
   function filterBooks() {
-    console.log(currentGenre)
+
     if (!currentGenre) {
       return state.books;
     }

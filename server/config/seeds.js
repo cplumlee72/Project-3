@@ -12,7 +12,6 @@ db.once("open", async () => {
     { name: "Toys" },
   ]);
 
-  await Club.deleteMany();
 
   console.log("genres seeded");
 
@@ -161,31 +160,32 @@ db.once("open", async () => {
   const posts = await Post.insertMany([
     {
       text: "ur dumb idiot",
-      user: users[1],
+      user: users[1].userName,
       likes: 3,
       dislikes: 500,
     },
     {
       text: "UWU DADDY",
-      user: users[0],
+      user: users[0].userName,
       likes: 6000,
       dislikes: 1,
     },
   ]);
 
-  const clubs = await Club.create([
-    {
-      name: "bababa",
-      image: "beeping",
-      description: "this does stuff",
-      Users: ["Reggie", "jerry"],
-      admins: ["Reggie"],
-      private: false,
-      book: books[1],
-      posts: [posts[0]],
-    },
-  ]);
+  await Club.deleteMany();
 
+  await Club.create(
+    {
+      name: 'Electric Boogaloo',
+      description: 'We hate the government',
+      image: 'cookie-tin.jpg',
+      users: users,
+      locked: false,
+      admins: users,
+      book: books[0],
+      posts: posts
+    }
+  )
   console.log("users seeded");
 
   process.exit();

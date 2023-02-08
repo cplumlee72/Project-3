@@ -23,25 +23,26 @@ const typeDefs = gql`
     image: String
     users: [User]
     admins: [User]
-    private: Boolean
-    book: Book
+    locked: Boolean
     posts: [Post]
+    book: Book
   }
 
   type Post {
     _id: ID
     text: String
-    user: User
+    user: String
     likes: Int
     dislikes: Int
   }
-
+  
   type Comment {
     _id: ID
     text: String
     user: User
     likes: Int
     dislikes: Int
+
   }
 
   type Order {
@@ -68,8 +69,10 @@ const typeDefs = gql`
   }
 
   type Query {
+    posts: [Post]
     genres: [Genre]
     clubs: [Club]
+    club(_id: ID!): Club
     books(genre: String, name: String): [Book]
     book(_id: ID!): Book
     user: User
@@ -78,11 +81,12 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+    addUser(userName: String!, email: String!, password: String!): Auth
     addOrder(books: [ID]!): Order
-    updateUser(firstName: String, lastName: String, email: String, password: String): User
+    updateUser(userName: String, email: String, password: String): User
     updateBook(_id: ID!, quantity: Int!): Book
     login(email: String!, password: String!): Auth
+    updatePost(_id: ID!, likes: Int!, dislikes: Int!): Post
   }
 `;
 
