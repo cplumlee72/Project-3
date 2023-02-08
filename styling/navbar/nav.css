@@ -4,6 +4,8 @@
   text-decoration: none;
   list-style: none;
   box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: 1.5px;
 }
 
 nav {
