@@ -1,21 +1,21 @@
 import React, { useEffect } from 'react';
-import BookItem from '../BookItem';
 import { useStoreContext } from '../../utils/GlobalState';
 import { UPDATE_CLUBS } from '../../utils/actions';
 import { useQuery } from '@apollo/client';
 import { QUERY_CLUBS } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 import spinner from '../../assets/spinner.gif';
+import ClubItem from '../ClubItem';
 
-function ClubList() {
+function ClubsList() {
   const [state, dispatch] = useStoreContext();
 
-//   const { currentGenre } = state;
+  const { clubs } = state;
 
   const { loading, data } = useQuery(QUERY_CLUBS);
 
   useEffect(() => {
-  
+  console.log(data);
     if (data) {
       dispatch({
         type: UPDATE_CLUBS,
@@ -38,8 +38,8 @@ function ClubList() {
   
   return (
     <div className="my-2">
-      <h2>Our Books:</h2>
-      { state.books.length ? (
+      <h2>Clubs:</h2>
+      { state.clubs.length ? (
         <div className="flex-row">
           {state.clubs.map((club) => (
             <ClubItem
@@ -47,8 +47,11 @@ function ClubList() {
               _id={club._id}
               image={club.image}
               name={club.name}
-              price={club.price}
-              quantity={club.quantity}
+              description={club.description}
+              book={club.book}
+              locked={club.locked}
+              posts={club.posts}
+              
             />
           ))}
         </div>
@@ -60,4 +63,4 @@ function ClubList() {
   );
 }
 
-export default ClubList;
+export default ClubsList;
