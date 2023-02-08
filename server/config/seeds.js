@@ -1,24 +1,26 @@
-const db = require('./connection');
-const { User, Book, Genre } = require('../models');
+const db = require("./connection");
+const { User, Book, Genre, Club, Post } = require("../models");
 
-db.once('open', async () => {
+db.once("open", async () => {
   await Genre.deleteMany();
 
   const genres = await Genre.insertMany([
-    { name: 'Young Adult' },
-    { name: 'Fiction' },
-    { name: 'Poop' },
-    { name: 'Books' },
-    { name: 'Toys' }
+    { name: "Young Adult" },
+    { name: "Fiction" },
+    { name: "Poop" },
+    { name: "Books" },
+    { name: "Toys" },
   ]);
 
-  console.log('genres seeded');
+
+  console.log("genres seeded");
 
   await Book.deleteMany();
 
   const books = await Book.insertMany([
     {
       name: `Harry Potter and the Socerer's Stone`,
+
       description:
         `In Harry Potter and the Sorcerer's Stone, Harry, an orphan, lives with the Dursleys, his horrible aunt and uncle, and their abominable son, Dudley. One day just before his eleventh birthday, an owl tries to deliver a mysterious letter?the first of a sequence of events that end in Harry meeting a giant man named Hagrid. Hagrid explains Harry's history to him: When he was a baby, the Dark wizard, Lord Voldemort, attacked and killed his parents in an attempt to kill Harry; but the only mark on Harry was a mysterious lightning-bolt scar on his forehead. Now he has been invited to attend Hogwarts School of Witchcraft and Wizardry, where the headmaster is the great wizard Albus Dumbledore. Harry visits Diagon Alley to get his school supplies, especially his very own wand. To get to school, he takes the Hogwarts Express from platform nine and three-quarters at King's Cross Station. On the train, he meets two fellow students who will become his closest friends: Ron Weasley and Hermione Granger. Harry is assigned to Gryffindor House at Hogwarts, and soon becomes the youngest-ever Seeker on the House Quidditch team. He also studies Potions with Professor Severus Snape, who displays a deep and abiding dislike for Harry, and Defense Against the Dark Arts with nervous Professor Quirrell; he and his friends defeat a mountain troll, help Hagrid raise a dragon, and explore the wonderful, fascinating world of Hogwarts. But all events lead irrevocably toward a second encounter with Lord Voldemort, who seeks an object of legend known as the Sorcerer's Stone`,
       image: 'HpSS.jpeg',
@@ -51,7 +53,7 @@ db.once('open', async () => {
         'Praesent placerat, odio vel euismod venenatis, lectus arcu laoreet felis, et fringilla sapien turpis vestibulum nisl.',
       image: 'dacode.jpeg',
       price: 3.99,
-      quantity: 50
+      quantity: 50,
     },
     {
       name: `The Richest Man in Babylon`,
@@ -81,75 +83,112 @@ db.once('open', async () => {
       quantity: 30
     },
     {
-      name: 'Tales at Bedtime',
+      name: "Tales at Bedtime",
       genre: genres[3],
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ornare diam quis eleifend rutrum. Aliquam nulla est, volutpat non enim nec, pharetra gravida augue. Donec vitae dictum neque. Pellentesque arcu lorem, fringilla non ligula ac, tristique bibendum erat. Ut a semper nibh. Quisque a mi et mi tempor ultricies. Maecenas eu ipsum eu enim hendrerit accumsan at euismod urna.',
-      image: 'bedtime-book.jpg',
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ornare diam quis eleifend rutrum. Aliquam nulla est, volutpat non enim nec, pharetra gravida augue. Donec vitae dictum neque. Pellentesque arcu lorem, fringilla non ligula ac, tristique bibendum erat. Ut a semper nibh. Quisque a mi et mi tempor ultricies. Maecenas eu ipsum eu enim hendrerit accumsan at euismod urna.",
+      image: "bedtime-book.jpg",
       price: 9.99,
-      quantity: 100
+      quantity: 100,
     },
     {
-      name: 'Spinning Top',
+      name: "Spinning Top",
       genre: genres[4],
-      description: 'Ut vulputate hendrerit nibh, a placerat elit cursus interdum.',
-      image: 'spinning-top.jpg',
+      description:
+        "Ut vulputate hendrerit nibh, a placerat elit cursus interdum.",
+      image: "spinning-top.jpg",
       price: 1.99,
-      quantity: 1000
+      quantity: 1000,
     },
     {
-      name: 'Set of Plastic Horses',
+      name: "Set of Plastic Horses",
       genre: genres[4],
       description:
-        'Sed a mauris condimentum, elementum enim in, rhoncus dui. Phasellus lobortis leo odio, sit amet pharetra turpis porta quis.',
-      image: 'plastic-horses.jpg',
+        "Sed a mauris condimentum, elementum enim in, rhoncus dui. Phasellus lobortis leo odio, sit amet pharetra turpis porta quis.",
+      image: "plastic-horses.jpg",
       price: 2.99,
-      quantity: 1000
+      quantity: 1000,
     },
     {
-      name: 'Teddy Bear',
+      name: "Teddy Bear",
       genre: genres[4],
       description:
-        'Vestibulum et erat finibus erat suscipit vulputate sed vitae dui. Ut laoreet tellus sit amet justo bibendum ultrices. Donec vitae felis vestibulum, congue augue eu, finibus turpis.',
-      image: 'teddy-bear.jpg',
+        "Vestibulum et erat finibus erat suscipit vulputate sed vitae dui. Ut laoreet tellus sit amet justo bibendum ultrices. Donec vitae felis vestibulum, congue augue eu, finibus turpis.",
+      image: "teddy-bear.jpg",
       price: 7.99,
-      quantity: 100
+      quantity: 100,
     },
     {
-      name: 'Alphabet Blocks',
+      name: "Alphabet Blocks",
       genre: genres[4],
       description:
-        'Morbi consectetur viverra urna, eu fringilla turpis faucibus sit amet. Suspendisse potenti. Donec at dui ac sapien eleifend hendrerit vel sit amet lectus.',
-      image: 'alphabet-blocks.jpg',
+        "Morbi consectetur viverra urna, eu fringilla turpis faucibus sit amet. Suspendisse potenti. Donec at dui ac sapien eleifend hendrerit vel sit amet lectus.",
+      image: "alphabet-blocks.jpg",
       price: 9.99,
-      quantity: 600
-    }
+      quantity: 600,
+    },
   ]);
 
-  console.log('books seeded');
+  console.log("books seeded");
 
   await User.deleteMany();
 
-  await User.create({
-    firstName: 'Pamela',
-    lastName: 'Washington',
-    email: 'pamela@testmail.com',
-    password: 'password12345',
-    orders: [
-      {
-        books: [books[0]._id, books[0]._id, books[1]._id]
-      }
-    ]
-  });
+  const users = await User.insertMany([
+    {
+      userName: "Pamela",
+      email: "pamela@testmail.com",
+      password: "password12345",
+      orders: [
+        {
+          books: [books[0]._id, books[0]._id, books[1]._id],
+        },
+      ],
+    },
+    {
+      userName: "Elijah",
+      email: "eholt@goobermail.com",
+      password: "password12345",
+      orders: [
+        {
+          books: [books[0]._id, books[0]._id, books[1]._id],
+        },
+      ],
+    },
+  ],
+  );
 
-  await User.create({
-    firstName: 'Elijah',
-    lastName: 'Holt',
-    email: 'eholt@testmail.com',
-    password: 'password12345'
-  });
+  await Post.deleteMany();
 
-  console.log('users seeded');
+  const posts = await Post.insertMany([
+    {
+      text: "ur dumb idiot",
+      user: users[1].userName,
+      likes: 3,
+      dislikes: 500,
+    },
+    {
+      text: "UWU DADDY",
+      user: users[0].userName,
+      likes: 6000,
+      dislikes: 1,
+    },
+  ]);
+
+  await Club.deleteMany();
+
+  await Club.create(
+    {
+      name: 'Electric Boogaloo',
+      description: 'We hate the government',
+      image: 'cookie-tin.jpg',
+      users: users,
+      locked: false,
+      admins: users,
+      book: books[0],
+      posts: posts
+    }
+  )
+  console.log("users seeded");
 
   process.exit();
 });

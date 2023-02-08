@@ -70,3 +70,40 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
+export const QUERY_CLUBS = gql`
+query clubs {
+  clubs {
+    _id
+    name
+    locked
+    image
+    description
+    users {
+      _id
+      userName
+    }
+    admins {
+      _id
+      userName
+    }
+    posts {
+      dislikes
+      likes
+      text
+      user
+      _id
+    }
+  }
+}`
+
+export const QUERY_POSTS = gql`
+query Posts {
+  posts {
+    text
+    user
+    likes
+    dislikes
+    _id
+  }
+}`

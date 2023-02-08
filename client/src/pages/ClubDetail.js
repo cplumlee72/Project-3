@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-
+import PostBox from '../components/PostBox';
 import Cart from '../components/Cart';
 import { useStoreContext } from '../utils/GlobalState';
 import {
@@ -9,44 +9,46 @@ import {
   UPDATE_CART_QUANTITY,
   ADD_TO_CART,
   UPDATE_BOOKS,
+  UPDATE_CLUBS,
 } from '../utils/actions';
-import { QUERY_BOOKS } from '../utils/queries';
+import { QUERY_CLUBS } from '../utils/queries';
 import { idbPromise } from '../utils/helpers';
 import spinner from '../assets/spinner.gif';
 
-function Detail() {
+function ClubDetail() {
   const [state, dispatch] = useStoreContext();
   const { id } = useParams();
 
-  const [currentBook, setCurrentBook] = useState();
+  const [currentClub, setCurrentClub] = useState();
 
-  const { loading, data } = useQuery(QUERY_BOOKS);
+  const { loading, data } = useQuery(QUERY_CLUBS);
 
-  const { books, cart } = state;
+  const { clubs, cart, currentBook } = state;
 
   useEffect(() => {
     // already in global store
-    console.log(currentBook)
-    if (books.length) {
-      setCurrentBook(books.find((book) => book._id === id));
+    console.log(data);
+    if (clubs.length) {
+      setCurrentClub(clubs.find((club) => club._id === id));
+
     }
     // retrieved from server
     else if (data) {
       dispatch({
-        type: UPDATE_BOOKS,
-        books: data.books,
+        type: UPDATE_CLUBS,
+        clubs: data.clubs,
       });
 
-      data.books.forEach((book) => {
-        idbPromise('books', 'put', book);
+      data.clubs.forEach((club) => {
+        idbPromise('clubs', 'put', club);
       });
     }
     // get cache from idb
     else if (!loading) {
-      idbPromise('books', 'get').then((indexedBooks) => {
+      idbPromise('clubs', 'get').then((indexedClubs) => {
         dispatch({
-          type: UPDATE_BOOKS,
-          books: indexedBooks,
+          type: UPDATE_CLUBS,
+          clubs: indexedClubs,
         });
       });
     }
@@ -84,16 +86,17 @@ function Detail() {
 
   return (
     <>
-      {currentBook && cart ? (
+      {currentClub && cart ? (
+        
         <div className="container my-1">
           <Link to="/">← Back to Books</Link>
 
-          <h2>{currentBook.name + ` - `}</h2>
+          <h2>{currentClub.name + ` - `}</h2>
 
-          <p>{currentBook.description}</p>
+          <p>{currentClub.description}</p>
 
           <p>
-            <strong>Price:</strong>${currentBook.price}{' '}
+            {/* <strong>Price:</strong>${currentClub.book.price}{' '} */}
             <button onClick={addToCart}>Add to Cart</button>
             <button
               disabled={!cart.find((p) => p._id === currentBook._id)}
@@ -104,9 +107,21 @@ function Detail() {
           </p>
 
           <img
-            src={`/images/${currentBook.image}`}
-            alt={currentBook.name}
+            src={`/images/${currentClub.image}`}
+            alt={currentClub.name}
           />
+          <div>
+          {currentClub.posts.map((post) => (
+            <PostBox
+              key={post._id}
+              _id={post._id}
+              text={post.text}
+              user={post.user}
+              likes={post.likes}
+              dislikes={post.dislikes}              
+            />
+          ))}
+          </div>
         </div>
       ) : null}
       {loading ? <img src={spinner} alt="loading" /> : null}
@@ -115,4 +130,4 @@ function Detail() {
   );
 }
 
-export default Detail;
+export default ClubDetail;

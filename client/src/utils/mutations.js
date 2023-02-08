@@ -30,22 +30,42 @@ export const ADD_ORDER = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser(
-    $firstName: String!
-    $lastName: String!
-    $email: String!
-    $password: String!
+mutation addUser(
+  $userName: String!
+  $email: String!
+  $password: String!
   ) {
-    addUser(
-      firstName: $firstName
-      lastName: $lastName
-      email: $email
-      password: $password
+  addUser(
+    userName: $userName
+    email: $email
+    password: $password
     ) {
-      token
-      user {
-        _id
-      }
+    token
+    user {
+      _id
     }
   }
+}
 `;
+
+export const ADD_MEMBER = gql`
+  mutation addMember(
+    $userName: String!
+  ) {
+    addMember(
+      userName: $firstName
+    )
+  }
+`;
+
+export const UPDATE_POST = gql`
+mutation updatePost(
+  $id: ID!, $likes: Int!, $dislikes:Int!
+  ) {
+  updatePost(
+    _id: $id, likes: $likes, dislikes: $dislikes
+    ) {
+    likes
+    dislikes
+  }
+}`

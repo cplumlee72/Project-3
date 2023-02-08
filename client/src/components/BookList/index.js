@@ -15,7 +15,9 @@ function BookList() {
   const { loading, data } = useQuery(QUERY_BOOKS);
 
   useEffect(() => {
+  
     if (data) {
+      console.log(data)
       dispatch({
         type: UPDATE_BOOKS,
         books: data.books,
@@ -34,8 +36,7 @@ function BookList() {
   }, [loading]);
   
   function filterBooks() {
-    console.log(state.books[0].genre)
-    console.log(currentGenre)
+
     if (!currentGenre) {
       return state.books;
     }

@@ -1,12 +1,9 @@
-import React, { useEffect } from 'react';
-import { useQuery } from '@apollo/client';
-import { useStoreContext } from '../../utils/GlobalState';
-import {
-  UPDATE_GENRES,
-  UPDATE_CURRENT_GENRE,
-} from '../../utils/actions';
-import { QUERY_GENRES } from '../../utils/queries';
-import { idbPromise } from '../../utils/helpers';
+import React, { useEffect } from "react";
+import { useQuery } from "@apollo/client";
+import { useStoreContext } from "../../utils/GlobalState";
+import { UPDATE_GENRES, UPDATE_CURRENT_GENRE } from "../../utils/actions";
+import { QUERY_GENRES } from "../../utils/queries";
+import { idbPromise } from "../../utils/helpers";
 
 function GenreMenu() {
   const [state, dispatch] = useStoreContext();
@@ -14,19 +11,18 @@ function GenreMenu() {
   const { genres, currentGenre } = state;
 
   const { loading, data } = useQuery(QUERY_GENRES);
-  
+
   useEffect(() => {
     if (data) {
-      console.log(data)
       dispatch({
         type: UPDATE_GENRES,
         genres: data.genres,
       });
       data.genres.forEach((genre) => {
-        idbPromise('genres', 'put', genre);
+        idbPromise("genres", "put", genre);
       });
     } else if (!loading) {
-      idbPromise('genres', 'get').then((genres) => {
+      idbPromise("genres", "get").then((genres) => {
         dispatch({
           type: UPDATE_GENRES,
           genres: genres,

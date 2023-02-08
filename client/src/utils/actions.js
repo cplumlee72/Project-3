@@ -1,4 +1,6 @@
 export const UPDATE_BOOKS = "UPDATE_BOOKS";
+export const UPDATE_LIKES = "UPDATE_LIKES";
+export const UPDATE_DISLIKES = "UPDATE_DISLIKES";
 
 export const ADD_TO_CART = "ADD_TO_CART";
 export const ADD_MULTIPLE_TO_CART = "ADD_MULTIPLE_TO_CART";
@@ -9,3 +11,5 @@ export const TOGGLE_CART = "TOGGLE_CART";
 
 export const UPDATE_GENRES = "UPDATE_GENRES";
 export const UPDATE_CURRENT_GENRE = "UPDATE_CURRENT_GENRE";
+export const UPDATE_CLUBS = "UPDATE_CLUBS"
+
