@@ -48,6 +48,29 @@ mutation addUser(
 }
 `;
 
+export const ADD_CLUB = gql`
+mutation addClub(
+  $name: String!
+  $description: String!
+  $image: String!
+  $admin: User
+  $book: Book!
+  ) {
+  addClub(
+    name: $name
+    description: $description
+    image: $image
+    admins: $admins
+    book: $book
+    ) {
+    book
+    club {
+      _id
+    }
+  }
+}
+`;
+
 export const ADD_MEMBER = gql`
   mutation addMember(
     $userName: String!
@@ -58,14 +81,16 @@ export const ADD_MEMBER = gql`
   }
 `;
 
-export const UPDATE_POST = gql`
-mutation updatePost(
-  $id: ID!, $likes: Int!, $dislikes:Int!
-  ) {
-  updatePost(
-    _id: $id, likes: $likes, dislikes: $dislikes
+export const ADD_POST = gql`
+mutation addPost( 
+  $text: String!
+  $user: String!
+) {
+  addPost( 
+    text: $text
+    user: $user
     ) {
-    likes
-    dislikes
+    text
+    user
   }
 }`

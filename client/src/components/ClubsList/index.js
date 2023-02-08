@@ -15,7 +15,7 @@ function ClubsList() {
   const { loading, data } = useQuery(QUERY_CLUBS);
 
   useEffect(() => {
-  console.log(data);
+
     if (data) {
       dispatch({
         type: UPDATE_CLUBS,
@@ -34,7 +34,7 @@ function ClubsList() {
     }
   }, [loading]);
   
-
+  console.log(data);
   
   return (
     <div className="my-2">

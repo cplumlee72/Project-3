@@ -79,19 +79,19 @@ query clubs {
     locked
     image
     description
-    users {
+    book {
+      name
       _id
-      userName
-    }
-    admins {
-      _id
-      userName
     }
     posts {
-      dislikes
-      likes
       text
       user
+      likes
+      dislikes
+      _id
+    }
+    users {
+      userName
       _id
     }
   }

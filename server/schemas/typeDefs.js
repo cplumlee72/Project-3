@@ -22,7 +22,7 @@ const typeDefs = gql`
     description: String
     image: String
     users: [User]
-    admins: [User]
+    admin: User
     locked: Boolean
     posts: [Post]
     book: Book
@@ -30,10 +30,8 @@ const typeDefs = gql`
 
   type Post {
     _id: ID
-    text: String
-    user: String
-    likes: Int
-    dislikes: Int
+    text: String!
+    user: String!
   }
   
   type Comment {
@@ -86,8 +84,11 @@ const typeDefs = gql`
     updateUser(userName: String, email: String, password: String): User
     updateBook(_id: ID!, quantity: Int!): Book
     login(email: String!, password: String!): Auth
-    updatePost(_id: ID!, likes: Int!, dislikes: Int!): Post
+    addPost( text: String!, user: String! ): Post
   }
 `;
 
 module.exports = typeDefs;
+
+
+// addClub(name: String!, description: String!, image: String!, admin: String!, book: String!): Club

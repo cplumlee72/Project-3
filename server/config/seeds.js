@@ -7,7 +7,7 @@ db.once("open", async () => {
   const genres = await Genre.insertMany([
     { name: "Young Adult" },
     { name: "Fiction" },
-    { name: "Poop" },
+    { name: "Nonfiction" },
     { name: "Books" },
     { name: "Toys" },
   ]);
@@ -161,16 +161,12 @@ db.once("open", async () => {
 
   const posts = await Post.insertMany([
     {
-      text: "ur dumb idiot",
+      text: "This book is a riveting experience from cover to cover!",
       user: users[1].userName,
-      likes: 3,
-      dislikes: 500,
     },
     {
-      text: "UWU DADDY",
+      text: "This book sucks!",
       user: users[0].userName,
-      likes: 6000,
-      dislikes: 1,
     },
   ]);
 
@@ -178,13 +174,13 @@ db.once("open", async () => {
 
   await Club.create(
     {
-      name: 'Electric Boogaloo',
-      description: 'We hate the government',
-      image: 'cookie-tin.jpg',
+      name: 'Wonderboys',
+      description: 'We love this book!',
+      image: 'HpSS.jpeg',
       users: users,
       locked: false,
       admins: users,
-      book: books[0],
+      book: books[0].name,
       posts: posts
     }
   )

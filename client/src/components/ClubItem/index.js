@@ -29,7 +29,7 @@ function ClubItem(item) {
       </Link>
       <div>
         <div>{description} </div>
-        <span>{book}</span>
+        {/* <span>{book.name}</span> */}
       </div>
     </div>
   );

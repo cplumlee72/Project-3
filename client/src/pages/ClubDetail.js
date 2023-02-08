@@ -20,14 +20,15 @@ function ClubDetail() {
   const { id } = useParams();
 
   const [currentClub, setCurrentClub] = useState();
+  const [currentBook, setCurrentBook] = useState();
 
   const { loading, data } = useQuery(QUERY_CLUBS);
 
-  const { clubs, cart, currentBook } = state;
+  const { clubs, cart } = state;
 
   useEffect(() => {
     // already in global store
-    console.log(data);
+ 
     if (clubs.length) {
       setCurrentClub(clubs.find((club) => club._id === id));
 
@@ -83,7 +84,7 @@ function ClubDetail() {
 
     idbPromise('cart', 'delete', { ...currentBook });
   };
-
+  console.log(currentClub);
   return (
     <>
       {currentClub && cart ? (

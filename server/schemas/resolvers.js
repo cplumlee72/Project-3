@@ -1,4 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
+const { text } = require('express');
 const { User, Book, Genre, Order, Club, Post } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
@@ -105,6 +106,11 @@ const resolvers = {
 
       return { token, user };
     },
+    // addClub: async (parent, args) => {
+    //   const club = await Club.create(args);
+      
+    //   return club;
+    // },
     addOrder: async (parent, { books }, context) => {
       console.log(context);
       if (context.user) {
@@ -129,9 +135,9 @@ const resolvers = {
 
       return await Book.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
     },
-    updatePost: async (parent, { _id, likes, dislikes}) => {
+    addPost: async ( args ) => {
       
-      return await Post.findByIdAndUpdate(_id, {likes: likes, dislikes:dislikes}, { new: true })
+      return await Post.create( args,  { new: true })
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });

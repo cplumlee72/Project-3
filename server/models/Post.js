@@ -6,19 +6,13 @@ const { Schema } = mongoose;
 
 const postSchema = new Schema({
   text: {
-    type: String
+    type: String,
+    required: true
   },
   user: {
     type: String,
-    ref: "User"
+    required: true
   },
-  likes: {
-    type: Number
-  },
-  dislikes: {
-    type: Number
-  },
-
 });
 
 const Post = mongoose.model('Post', postSchema);
