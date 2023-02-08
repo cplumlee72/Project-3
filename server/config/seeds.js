@@ -83,47 +83,47 @@ db.once("open", async () => {
       quantity: 30
     },
     {
-      name: "Tales at Bedtime",
+      name: `If It Bleeds`,
       genre: genres[3],
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ornare diam quis eleifend rutrum. Aliquam nulla est, volutpat non enim nec, pharetra gravida augue. Donec vitae dictum neque. Pellentesque arcu lorem, fringilla non ligula ac, tristique bibendum erat. Ut a semper nibh. Quisque a mi et mi tempor ultricies. Maecenas eu ipsum eu enim hendrerit accumsan at euismod urna.",
-      image: "bedtime-book.jpg",
+      `Holly Gibney of the Finders Keepers detective agency sees footage of a horrific school bombing on TV. She suspects that there is something odd about the reporter Ondowsky who was first on the scene and that he may be a supernatural 'outsider'.`,
+      image: 'IfItBleeds_bk.jpg',
       price: 9.99,
       quantity: 100,
     },
     {
-      name: "Spinning Top",
+      name: `The Circle`,
       genre: genres[4],
       description:
-        "Ut vulputate hendrerit nibh, a placerat elit cursus interdum.",
-      image: "spinning-top.jpg",
+      `The Circle is a 2013 dystopian novel written by American author Dave Eggers. The novel chronicles tech worker Mae Holland as she joins a powerful Internet company. Her initially rewarding experience turns darker.`,
+      image: 'TheCircle_bk.jpg',
       price: 1.99,
       quantity: 1000,
     },
     {
-      name: "Set of Plastic Horses",
+      name: `A Wrinkle in Time`,
       genre: genres[4],
       description:
-        "Sed a mauris condimentum, elementum enim in, rhoncus dui. Phasellus lobortis leo odio, sit amet pharetra turpis porta quis.",
-      image: "plastic-horses.jpg",
+      `A Wrinkle in Time is a young adult science fantasy novel written by American author Madeleine L'Engle. First published in 1962, the book won the Newbery Medal, the Sequoyah Book Award, the Lewis Carroll Shelf Award, and was runner-up for the Hans Christian Andersen Award`,
+      image: 'AWrinkleInTime.jpg',
       price: 2.99,
       quantity: 1000,
     },
     {
-      name: "Teddy Bear",
+      name: `In A Dark, Dark Wood`,
       genre: genres[4],
       description:
-        "Vestibulum et erat finibus erat suscipit vulputate sed vitae dui. Ut laoreet tellus sit amet justo bibendum ultrices. Donec vitae felis vestibulum, congue augue eu, finibus turpis.",
-      image: "teddy-bear.jpg",
+      `In a Dark, Dark Wood is a psychological murder mystery novel by Ruth Ware. The novel tells the story of unreliable, amnesiac narrator Nora Shaw as she attempts to recall the events of a bachelorette weekend in which a man was murdered that both she and the bride-to-be loved.`,
+      image: 'InADark-DarkWood_bk.jpg',
       price: 7.99,
       quantity: 100,
     },
     {
-      name: "Alphabet Blocks",
+      name: `Proxies`,
       genre: genres[4],
       description:
-        "Morbi consectetur viverra urna, eu fringilla turpis faucibus sit amet. Suspendisse potenti. Donec at dui ac sapien eleifend hendrerit vel sit amet lectus.",
-      image: "alphabet-blocks.jpg",
+      `Past compunction, expressly unbeholden, these twenty-four single-subject essays train focus on a startling miscellany of topics ―Foot Washing, Dossiers, Br’er Rabbit, Housesitting, Man Roulette, the Locus Amoenus―that begin to unpack the essayist himself and his life’s rotating concerns: sex and sexuality, poetry and poetics, subject positions in American labor (not excluding academia), and his upbringing in working-class, Primitive Baptist, central-piedmont North Carolina`,
+      image: 'Proxies_bk.jpg',
       price: 9.99,
       quantity: 600,
     },
