@@ -49,7 +49,7 @@ function BookList() {
   
   return (
     <div className="my-2">
-      <h2>Our Books:</h2>
+      <h2 className="bookListHeader">Our Books:</h2>
       { state.books.length ? (
         <div className="flex-row">
           {filterBooks().map((book) => (
