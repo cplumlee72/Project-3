@@ -9,7 +9,9 @@
   --spacing-two: calc(1rem);
 }
 
-* {
+
+
+/* * {
   box-sizing: border-box;
 }
 
@@ -208,4 +210,103 @@ input:focus {
   .card {
     width: 100%;
   }
+} */
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+  color: rgba(56, 52, 52, 0.966);
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  display: grid;
+  margin: auto;
+  text-align: center;
+  background-color: #e9ecef;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 45px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 2px;
+  margin-top: 45px;
+}
+
+.division {
+  width: 450px;
+  height: 5px;
+  background-color: #273469;
+  margin: 24px;
+}
+
+.welcome-note {
+  text-align: center;
+  font-size: 26px;
+  line-height: 28px;
+  margin-bottom: 28px;
+  color: rgba(56, 52, 52, 0.966)
+}
+
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column
+}
+
+.form-control {
+  width: 100%;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+  border-radius: 27px;
+  font-size: 18px;
+  margin: 10px;
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  background: #ced4da;
+  color: #333;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.submit {
+  background-color: #273469;
+  padding: 15px 64px;
+  width: 32px auto;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+}
+
+.submit:hover {
+  cursor: pointer;
+  background-color: #474f6d;
+  transition: .5s;
+}
+
+.py-1 {
+  padding-top: var(--spacing-one);
+  padding-bottom: var(--spacing-one);
 }

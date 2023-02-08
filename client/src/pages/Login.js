@@ -30,41 +30,45 @@ function Login(props) {
   };
 
   return (
-    <div className="container my-1">
-      <Link to="/signup">← Go to Signup</Link>
+    <section className="main">
+      <div className="login-container">
+        {/* <Link to="/signup">← Go to Signup</Link> */}
 
-      <h2>Login</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="email">Email address:</label>
-          <input
-            placeholder="youremail@test.com"
-            name="email"
-            type="email"
-            id="email"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">Password:</label>
-          <input
-            placeholder="******"
-            name="password"
-            type="password"
-            id="pwd"
-            onChange={handleChange}
-          />
-        </div>
-        {error ? (
-          <div>
-            <p className="error-text">The provided credentials are incorrect</p>
+        <p className="title">Welcome back!</p>
+        <div className="division"></div>
+        <p className="welcome-note">Login using your existing login credentials</p>
+        <form className="login-form" onSubmit={handleFormSubmit}>
+          <div className="form-control">
+            <input
+              className='py-1'
+              placeholder="Email"
+              name="email"
+              type="email"
+              id="email"
+              onChange={handleChange}
+            />
           </div>
-        ) : null}
-        <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
-    </div>
+          <div className="form-control">
+            <input
+              className="py-1"
+              placeholder="Password"
+              name="password"
+              type="password"
+              id="pwd"
+              onChange={handleChange}
+            />
+          </div>
+          {error ? (
+            <div>
+              <p className="error-text">The provided credentials are incorrect</p>
+            </div>
+          ) : null}
+          <div className="flex-row flex-end">
+            <button type="submit" className="submit">Login</button>
+          </div>
+        </form>
+      </div>
+    </section>
   );
 }
 
