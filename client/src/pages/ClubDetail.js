@@ -17,20 +17,24 @@ import spinner from '../assets/spinner.gif';
 
 function ClubDetail() {
   const [state, dispatch] = useStoreContext();
-  const { id } = useParams();
+  
 
   const [currentClub, setCurrentClub] = useState();
   const [currentBook, setCurrentBook] = useState();
 
   const { loading, data } = useQuery(QUERY_CLUBS);
 
-  const { clubs, cart } = state;
-
+  const { clubs, cart, books } = state;
+  
+  const  bookid  = data.clubs[0].book._id
+  const  clubid = data.clubs[0]._id
   useEffect(() => {
+    console.log(books)
+    console.log(bookid)
+    setCurrentClub(clubs.find((club) => club._id === clubid));
+    setCurrentBook(books.find((book) => book._id === bookid));
     // already in global store
- 
     if (clubs.length) {
-      setCurrentClub(clubs.find((club) => club._id === id));
 
     }
     // retrieved from server
@@ -56,6 +60,7 @@ function ClubDetail() {
   }, []);
 
   const addToCart = () => {
+    const  id  = currentBook._id;
     const itemInCart = cart.find((cartItem) => cartItem._id === id);
     if (itemInCart) {
       dispatch({
@@ -118,8 +123,8 @@ function ClubDetail() {
               _id={post._id}
               text={post.text}
               user={post.user}
-              likes={post.likes}
-              dislikes={post.dislikes}              
+              // likes={post.likes}
+              // dislikes={post.dislikes}              
             />
           ))}
           </div>

@@ -82,15 +82,9 @@ export const ADD_MEMBER = gql`
 `;
 
 export const ADD_POST = gql`
-mutation addPost( 
-  $text: String!
-  $user: String!
-) {
-  addPost( 
-    text: $text
-    user: $user
-    ) {
-    text
+mutation addPost($text: String!, $user: String!) {
+  addPost(text: $text, user: $user) {
+    text,
     user
   }
 }`

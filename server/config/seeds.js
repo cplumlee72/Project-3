@@ -9,7 +9,7 @@ db.once("open", async () => {
     { name: "Fiction" },
     { name: "Nonfiction" },
     { name: "Books" },
-    { name: "Toys" },
+    { name: "Misc" },
   ]);
 
 
@@ -129,8 +129,10 @@ db.once("open", async () => {
     },
   ]);
 
-  console.log("books seeded");
-
+  // console.log(books.map(book => {
+  //   return book[0]._id
+  // }));
+  console.log(books[0].name)
   await User.deleteMany();
 
   const users = await User.insertMany([
@@ -180,7 +182,7 @@ db.once("open", async () => {
       users: users,
       locked: false,
       admins: users,
-      book: books[0].name,
+      book: books[0]._id,
       posts: posts
     }
   )

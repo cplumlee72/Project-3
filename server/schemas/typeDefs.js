@@ -33,7 +33,12 @@ const typeDefs = gql`
     text: String!
     user: String!
   }
-  
+
+  input PostInput {
+    text: String!
+    user: String!
+  }
+
   type Comment {
     _id: ID
     text: String
@@ -65,6 +70,8 @@ const typeDefs = gql`
     token: ID
     user: User
   }
+
+
 
   type Query {
     posts: [Post]

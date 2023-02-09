@@ -10,7 +10,7 @@ const resolvers = {
       return await Genre.find();
     },
     clubs: async () => {
-      return await Club.find();
+      return await Club.find().populate("book");
     },
     club: async (parent, { _id }) => {
       return await Club.findById(_id);
@@ -135,9 +135,10 @@ const resolvers = {
 
       return await Book.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
     },
-    addPost: async ( args ) => {
-      
-      return await Post.create( args,  { new: true })
+    addPost: async ( parent, {user, text} ) => {
+      console.log(user)
+      console.log(text)
+      return await Post.create( {user, text} )
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });

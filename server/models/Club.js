@@ -26,7 +26,7 @@ const clubSchema = new Schema({
     type: [User.schema],
   },
   book: {
-    type: String,
+    type: Schema.Types.ObjectId,
     ref: 'Book',
     required: true
   },

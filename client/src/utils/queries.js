@@ -80,14 +80,13 @@ query clubs {
     image
     description
     book {
+      description
       name
       _id
     }
     posts {
       text
       user
-      likes
-      dislikes
       _id
     }
     users {
