@@ -8,7 +8,8 @@
     "develop": "export NODE_OPTIONS=--openssl-legacy-provider && concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run --openssl-legacy-provider seed",
-    "build": "cd client && npm run --openssl-legacy-provider build"
+    "build": "cd client && npm run --openssl-legacy-provider build",
+    "heroku-postbuild": "npm run seed"
   },
   "keywords": [],
   "author": "",
